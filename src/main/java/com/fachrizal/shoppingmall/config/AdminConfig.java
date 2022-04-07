@@ -14,13 +14,16 @@ public class AdminConfig {
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
+    @Autowired
+    private AdminRepository adminRepository;
+
     @Bean
-    CommandLineRunner commandLineRunner(AdminRepository adminRepository) {
+    CommandLineRunner commandLineRunner() {
         return args -> {
-            Admin admin = new Admin(
-                    "admin",
-                    bcryptEncoder.encode("password")
-            );
+            Admin admin = Admin.builder()
+                    .userId("admin")
+                    .password(bcryptEncoder.encode("password1"))
+                    .build();
 
             adminRepository.save(admin);
         };

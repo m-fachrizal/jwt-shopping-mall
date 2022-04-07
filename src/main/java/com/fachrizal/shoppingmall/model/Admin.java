@@ -1,9 +1,18 @@
 package com.fachrizal.shoppingmall.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Admin {
 
     @Id
@@ -14,6 +23,7 @@ public class Admin {
     @Column
     private String password;
 
+    /*
     public Admin() {
 
     }
@@ -38,5 +48,6 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
+     */
 
 }

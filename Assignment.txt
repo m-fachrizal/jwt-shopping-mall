@@ -1,0 +1,39 @@
+Task : - A shopping mall (XYZ) requested to make an back-end application for registration of it's on-boarding employees. 
+You are required to complete the back-end application based upon micro-services architecture. The customer service (CS) has a front end application. 
+There is Userid and Password when CS logon to the application, we need to validate the credentials and issue a JWT auth token to the user using Auth Service in our application. 
+For every subsequesnt request, the issued JWT token will verified at back-end once per request. 
+User will enter the Mail ID, Mob. No. and NationalID, and request to backend service for registration.
+
+Back-end requirement : 
+
+Note : Microservices discovery is removed from this task.
+
+Create a private Github repository and share with mailid's provide in mail.
+
+Scope :- Phase 1 (Development)
+
+      Service 1 : LoginService {Request : UserID and Password}
+	              Calls the Authentication service and returns JWT token to the user.
+				  
+      Service 2 : RegistrationService {Request: Mail ID, Mob. No. and NationalID},
+                  Service is the main service which controls the flow of registration and responsible to call other micro-services. 
+		  Returns the response                            to client.
+
+      Service 3 : ValidatingExistingEmployee {Request : Mail ID, Mob. No. and NationalID},                       
+                  This service will validate if the employee is existing or not. Called by Service 1. Use Postgres database.
+					   
+      Service 4 : RegisterNewEmployee {Request: Mail ID, Mob. No. and NationalID},                        
+                  This service will register the employee. Called by Service 1. Use Postgres database.
+				   
+      Service 5 : Authentication Service,
+	              Service will validate the user and issue JWT token. Verify the validity of JWT token.
+
+Scope :- Phase 2 (Deployment)
+      
+	  Direct deployment to Kubernetes cluster using Minikube or Minishift.
+	  
+	  
+Scope :- Phase 3 (Deployment)
+     
+	  Deployment using CI/CD pipeline (Jenkins).
+      
